@@ -1,8 +1,7 @@
 node {
 
 	def app
-	def mvnHome = tool name: 'maven3', type: 'maven'
-	def mvnCMD = "${mvnHome}/bin/mvn"
+	def mvnCMD = "/usr/bin/mvn"
     	def Namespace = "default"
   	def ImageName = "ravigajar/helloworld"
 	def hostname = InetAddress.localHost.canonicalHostName
