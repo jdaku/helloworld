@@ -1,4 +1,4 @@
-- hosts: local
+- hosts: localhost
   connection: local
   tasks:
   - name: Add Docker GPG key
