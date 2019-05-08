@@ -1,0 +1,3 @@
+deployment_file: "deployment.yaml"
+service_file: "service.yaml"
+sudo_user : "ravi"

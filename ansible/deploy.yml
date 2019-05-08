@@ -1,0 +1,24 @@
+- hosts: localhost
+  vars_files:
+    - ./../vars.yml
+  sudo: true
+  sudo_user: "{{ sudo_user }}"
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Remove old deployment and service
+      command: "kubectl delete -f {{ deployment_file }} -f {{ service_file }}"
+      ignore_errors: yes
+      register: cat
+    - debug: var=cat.stdout_lines
+      
+    - pause: seconds=12
+    - name: apply kubernetes deployment 
+      command: "kubectl apply -f {{ deployment_file }}"
+      register: cat
+    - debug: var=cat.stdout_lines
+    
+    - name: apply kubernetes deployment Service
+      command: "kubectl apply -f {{ service_file }}"
+      register: cat
+    - debug: var=cat.stdout_lines
