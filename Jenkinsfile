@@ -9,6 +9,8 @@ node {
 	try{ 
 		stage('Clone repository') {
 			checkout scm
+		        sh "git rev-parse --short HEAD > .git/commit-id"
+      			imageTag= readFile('.git/commit-id').trim()
 		}
 		stage('Mvn Compile') {	
 			sh "${mvnCMD} compile "
