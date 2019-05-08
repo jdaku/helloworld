@@ -9,6 +9,7 @@ node {
 	def URL = "curl -sL --connect-timeout 20 --max-time 30 -w '%{http_code}\\n'  ${hostname}:30080/hello  -o /dev/null"
 	try{ 
 		stage('Clone repository') {
+			checkout scm
       			sh "git rev-parse --short HEAD > .git/commit-id"
       			imageTag= readFile('.git/commit-id').trim()
 		}
