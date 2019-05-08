@@ -1,4 +1,4 @@
-- hosts: local 
+- hosts: localhost
   connection: local
   tasks:
     - name: install maven on your local Ubuntu machine
